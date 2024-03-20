@@ -62,6 +62,14 @@ import('pkgconfig').generate(
   filebase : 'jsoncpp',
   description : 'A C++ library for interacting with JSON')
 
+cps = import('cps')
+pkg = cps.create_package('jsoncpp', description : 'A C++ library for interacting with JSON')
+pkg.add_component(
+  jsoncpp_lib,
+  default : true,
+  cpp_include_directories : ['include'],
+)
+
 # for libraries bundling jsoncpp
 jsoncpp_dep = declare_dependency(
   include_directories : jsoncpp_include_directories,
